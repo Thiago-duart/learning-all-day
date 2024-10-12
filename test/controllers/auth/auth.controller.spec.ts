@@ -25,4 +25,13 @@ test('testReceiveEmail_emailNotFound_returns400',async()=>{
     const response = await AuthStub.singUp(singUpData)
     expect(response).toEqual({statusCode:400,body:'The email field is mandatory and was not provided.'})
 })
+test('testReceivePassword_passwordNotFound_returns400',async()=>{
+    const singUpData = {body:{
+        name:'valid-name',
+        email:'invalid-email',
+    }}
+    const {AuthStub} = makeSut()
+    const response = await AuthStub.singUp(singUpData)
+    expect(response).toEqual({statusCode:400,body:'The password field is mandatory and was not provided.'})
+})
 })  
